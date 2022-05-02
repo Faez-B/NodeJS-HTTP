@@ -23,6 +23,13 @@ const server = http.createServer( (req , res) => {
             }
     
         }
+
+        else if (req.url === '/public/images/image.png') {
+            if (req.method === 'GET') {
+                res.writeHead(200, { 'content-type': 'image/png' }); 
+                console.log( fs.readFileSync(path.join(__dirname, req.url ) ) );
+            }  
+        }
         
         else{
             res.writeHead(404, { 'content-type': 'text/html' });    
