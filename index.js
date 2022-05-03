@@ -28,13 +28,15 @@ const server = http.createServer( (req , res) => {
     
         }
 
-        else if (req.url === '/public/images/image.png') {
+        else if (req.url === '/public/image.png') {
             if (req.method === 'GET') {
+                let extension = path.extname(req.url);
+                extension = extension.slice(1, extension.length);
+                // res.write(extension);
                 res.writeHead(200, { 'content-type': 'image/png' }); 
-                // console.log( fs.readFileSync(path.join(__dirname, req.url ) ) );
-
-                res.write(fs.readFileSync(path.join(__dirname, req.url ) ));
-            }  
+                // res.write(fs.readFileSync(path.join(__dirname, req.url ) ));
+                res.write(fs.readFileSync(path.join(__dirname, `/public/${extension}/image.png` ) ));
+            }
         }
 
         else if (req.url === '/public/css/style.css') {
