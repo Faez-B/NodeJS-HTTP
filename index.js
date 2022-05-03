@@ -14,7 +14,7 @@ const server = http.createServer( (req , res) => {
                 res.write("<h1>HELLO WORLD FAEZ</h1>");
                 console.log( fs.readFileSync(path.join(__dirname, "/public/pages/index.html"), "utf8") );
             }  
-    
+
             else {
                 // exemple : curl -X PUT localhost:8000
                 res.writeHead(400, { 'content-type': 'text/html' });
